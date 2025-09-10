@@ -1,12 +1,14 @@
 import React from "react";
-import NavigationBar from "./Components/NavigationBar";
+import FormComponent from "./Components/FormComponent";
+// import Contador from "./Components/Contador";
 
 const App = () => {
   return (
     <>
-        <h2 className="text-center text-2xl">Meu lindo Site</h2>
-        <NavigationBar />
-        <footer>Footer do site</footer>
+      <div>
+        {/* <Contador /> */}
+        <FormComponent />
+      </div>
     </>
   );
 };
