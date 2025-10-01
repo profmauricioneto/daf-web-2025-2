@@ -1,13 +1,17 @@
 import React from "react";
-import FormComponent from "./Components/FormComponent";
+// import Cadastro from "./exercicios/exercicio03/Cadastro";
+// import FormComponent from "./Components/FormComponent";
 // import Contador from "./Components/Contador";
+import Navigator from "./exercicios/exercicio03/Navigator";
 
 const App = () => {
   return (
     <>
       <div>
+        <Navigator />
         {/* <Contador /> */}
-        <FormComponent />
+        {/* <FormComponent /> */}
+        {/* <Cadastro /> */}
       </div>
     </>
   );
