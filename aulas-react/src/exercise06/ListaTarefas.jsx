@@ -26,10 +26,6 @@ export default function ListaTarefas() {
     setTarefas((tarefasAnteriores) => [...tarefasAnteriores, novaTarefa]);
     setContador((contadorAnterior) => contadorAnterior + 1);
     setTarefa('');
-
-    console.log(state);
-    action();
-    console.log(state);
   };
 
   return (
