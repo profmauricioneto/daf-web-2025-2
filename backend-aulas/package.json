@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/main.js",
     "exercicio01": "nodemon src/exercicio01/index.js",
-    "exercicio02": "nodemon src/exercicio02/index.js"
+    "exercicio02": "nodemon src/exercicio02/index.js",
+    "exercicio03": "nodemon src/exercicio03/api-produtos.js"
 
   },
   "keywords": [],
