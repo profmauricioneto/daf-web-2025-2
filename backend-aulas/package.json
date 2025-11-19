@@ -7,8 +7,8 @@
     "dev": "nodemon src/main.js",
     "exercicio01": "nodemon src/exercicio01/index.js",
     "exercicio02": "nodemon src/exercicio02/index.js",
-    "exercicio03": "nodemon src/exercicio03/api-produtos.js"
-
+    "exercicio03": "nodemon src/exercicio03/api-produtos.js",
+    "exercicio04": "nodemon src/exercicio04/main.js"
   },
   "keywords": [],
   "author": "",

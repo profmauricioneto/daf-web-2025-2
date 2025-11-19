@@ -16,6 +16,7 @@ const logMiddleware = (req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method}-${req.url}`);
     next();
 };
+let idProximo = 5;
 
 app.use(express.json());
 app.use(logMiddleware);
@@ -35,7 +36,48 @@ app.get('/produtos/:id', (req, res) => {
     } else {
         res.json({message: "erro: id não corresponde a nenhum produto!"});
     }
+});
+
+// 3. criar um produto
+app.post('/produtos', (req, res) => {
+    // const nome = req.body.nome;
+    // const descricao = req.body.descricao;
+    // const preco = parseFloat(req.body.preco);
+    const {nome, descricao, preco} = req.body;
+
+    const produto = {id: ++idProximo, nome, descricao, preco};
+    if (!produto) {
+        res.json({message: 'Error ao adicionar um novo produto'})
+    } else {
+        produtos.push(produto);
+        res.json({message: 'produto adicionado com sucesso', produto});
+    }
+});
+
+// 4. Atualizar um produto
+app.put('/produtos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const produtoEncontrado = produtos.find(p => p.id === id);
+    if (!produtoEncontrado) return res.json({message: 'Este id não tem referencia de nenhum produto'});
+
+    const {nome, descricao, preco} = req.body;
+    produtoEncontrado.nome = nome || produtoEncontrado.nome;
+    produtoEncontrado.descricao = descricao || produtoEncontrado.descricao;
+    produtoEncontrado.preco = preco || produtoEncontrado.preco;
+
+    res.json({message: 'Produto atualizado com sucesso', produto: produtoEncontrado});
+});
+
+// 5. Deletar um produto
+app.delete('/produtos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const produtoIndex = produtos.findIndex(p => p.id === id);
+    if (produtoIndex == -1) return res.json({message: 'Este id não corresponde a um produto!'});
+
+    produtos.splice(produtoIndex, 1);
+    res.json({message: 'produto excluído com sucesso!'});
 })
+
 
 app.listen(PORT, () => {
     console.log(`Servidor executando em: http://localhost:${PORT}`);
