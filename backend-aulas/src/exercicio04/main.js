@@ -1,4 +1,5 @@
 const express = require('express');
+const routes = require('./modules/produtos/produto.routes');
 const app = express();
 
 const PORT = 3000;
@@ -9,6 +10,8 @@ const logMiddleware = (req, res, next) => {
 };
 app.use(express.json());
 app.use(logMiddleware);
+
+app.use(routes);
 
 app.get('/', (req, res) => {
     res.json({message: 'api-rest de produtos'})
