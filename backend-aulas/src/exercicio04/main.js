@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const routes = require('./modules/produtos-db/produtos.routes');
 const app = express();
-
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 const logMiddleware = (req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method}-${req.url}`);

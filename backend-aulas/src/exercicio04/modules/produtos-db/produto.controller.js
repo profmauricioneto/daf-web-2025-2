@@ -74,11 +74,11 @@ const atualizarProdutoController = async (req, res) => {
     const { nome, descricao, preco } = req.body;
 
     // Validação básica
-    if (!nome || !descricao || !preco) {
-      return res.status(400).json({
-        error: 'Campos obrigatórios: nome, descricao e preco'
-      });
-    }
+    // if (!nome || !descricao || !preco) {
+    //   return res.status(400).json({
+    //     error: 'Campos obrigatórios: nome, descricao e preco'
+    //   });
+    // }
 
     const produto = await ProdutoModel.atualizarProduto(id, { nome, descricao, preco });
 

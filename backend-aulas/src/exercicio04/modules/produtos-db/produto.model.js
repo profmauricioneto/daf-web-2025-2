@@ -46,14 +46,21 @@ const buscarProdutoPorId = async (id) => {
 // atualizar um produto
 const atualizarProduto = async (id, produto) => {
   try {
+    const produtoEncontrado = await buscarProdutoPorId(id);
+
+    if (!produtoEncontrado) {
+      console.error(`Produto não encontrado!`);
+      return;
+    }
+
     return await prisma.produto.update({
       where: {
         id: parseInt(id)
       },
       data: {
-        nome: produto.nome,
-        descricao: produto.descricao,
-        preco: produto.preco
+        nome: produto.nome || produtoEncontrado.nome,
+        descricao: produto.descricao || produtoEncontrado.descricao,
+        preco: produto.preco || produtoEncontrado.preco
       }
     });
   } catch (error) {
